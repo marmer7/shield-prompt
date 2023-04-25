@@ -1,0 +1,44 @@
+#shield-prompt-modal {
+  position: absolute;
+  bottom: 100%; /* Change this to position the modal above the target div */
+  left: 0;
+  padding: 5px 10px;
+  font-size: 14px;
+  color: #333;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  z-index: 1000; /* Increase the z-index value to display the modal above the target div */
+}
+
+.matched-word {
+  color: #f00;
+}
+
+.good {
+  color: #007bff;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.bad {
+  color: #f00bff;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.context {
+  flex-grow: 1;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+}
