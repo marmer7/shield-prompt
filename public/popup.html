@@ -8,19 +8,19 @@
   </head>
   <body>
     <h1>ShieldPrompt</h1>
-    <p>Enter your text below:</p>
-    <textarea id="text-input" rows="10"></textarea>
-    <div id="analysis-container" class="hidden">
-      <h2>Analysis Results</h2>
-      <div id="word-count"></div>
-      <div id="token-count"></div>
-      <div id="matched-words"></div>
-      <div id="confidential-matches"></div>
-      <button id="close-analysis-button">Close</button>
-    </div>
-    <div id="error-message" class="hidden">
-      <p>Error: Unable to retrieve analysis results.</p>
-      <button id="close-error-button">Close</button>
+    <div id="quick-settings">
+      <h2>Quick Settings</h2>
+      <label class="switch">
+        <input type="checkbox" id="on-off-toggle" />
+        <span class="slider round"></span>
+      </label>
+      <span id="toggle-label">Turn ShieldPrompt On/Off</span>
+      <br />
+      <label class="switch">
+        <input type="checkbox" id="automatic-masking-toggle" />
+        <span class="slider round"></span>
+      </label>
+      <span id="masking-toggle-label">Enable Automatic Masking</span>
     </div>
   </body>
 </html>

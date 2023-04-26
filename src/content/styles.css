@@ -1,14 +1,18 @@
 #shield-prompt-modal {
   position: absolute;
-  bottom: 100%; /* Change this to position the modal above the target div */
+  bottom: 100%;
   left: 0;
-  padding: 5px 10px;
+  padding: 10px;
   font-size: 14px;
   color: #333;
   background-color: #f9f9f9;
   border: 1px solid #ccc;
   border-radius: 4px;
-  z-index: 1000; /* Increase the z-index value to display the modal above the target div */
+  z-index: 1000;
+}
+
+.analysis-summary {
+  margin-bottom: 5px;
 }
 
 .matched-word {
@@ -36,9 +40,18 @@
 
 .context {
   flex-grow: 1;
+  overflow-wrap: break-word; /* Breaks long words to fit the container width */
+  word-break: break-word; /* Fallback for older browsers */
+  max-width: 500px; /* Set the maximum width of the context div, adjust as needed */
 }
 
 .actions {
   display: flex;
   gap: 10px;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 10px 0;
 }

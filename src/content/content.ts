@@ -1,30 +1,49 @@
 import "./styles.css";
-import { updateAnalysis } from "./analysis";
-import { getStateFromBackground } from "../content/state";
+import { updateAnalysis } from "./analysis/analysis";
+import { getStateFromBackground, setStateInBackground } from "../content/state";
+import { resetAnalysisState } from "./analysis/analysis";
 
-function handleInput(textareaElement: HTMLTextAreaElement) {
-  const textValue = textareaElement.value;
-  updateAnalysis(textValue);
+const wordList = ["custom", "word", "example", "list"];
+
+async function handleInput(textareaElement: HTMLTextAreaElement) {
+  updateAnalysis(textareaElement);
 }
 
+function insertMainDiv() {
+  const divElement = document.createElement("div");
+  divElement.setAttribute("id", "shield-prompt-modal");
+  const targetDiv = document.querySelector("div.absolute.bottom-0");
+  targetDiv?.appendChild(divElement);
+}
 async function initialize() {
-  const currentState = await getStateFromBackground();
+  //   const currentState = await getStateFromBackground();
   const textareaElement = document.querySelector("textarea");
-  const form = textareaElement?.closest("form");
+  const formElement = textareaElement?.closest("form");
 
   const divElement = document.createElement("div");
   divElement.setAttribute("id", "shield-prompt-modal");
 
-  if (textareaElement) {
+  if (textareaElement && formElement) {
     textareaElement.addEventListener("input", () =>
       handleInput(textareaElement)
     );
 
+    formElement.addEventListener("submit", async (e: Event) => {
+      e.preventDefault(); // prevent default form submission behavior
+      await resetAnalysisState(textareaElement);
+    });
+
+    textareaElement.addEventListener("keydown", (e: KeyboardEvent) => {
+      if (e.key === "Enter" && !e.shiftKey) {
+        e.preventDefault(); // prevent default behavior of inserting newline character
+        formElement?.dispatchEvent(new Event("submit")); // submit the form programmatically
+      }
+    });
+
     const targetDiv = document.querySelector("div.absolute.bottom-0");
-    // form?.appendChild(divElement);
     targetDiv?.appendChild(divElement);
 
-    updateAnalysis(textareaElement.value);
+    updateAnalysis(textareaElement);
   }
 }
 

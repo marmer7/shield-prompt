@@ -1,6 +1,10 @@
 const defaultState: State = {
   wordCount: 0,
-  offenseStats: {},
+  tokenCount: 0,
+  words: [],
+  matchedWords: [],
+  customList: ["example"],
+  ignoredWords: [],
   settings: {
     autoCorrect: false,
   },
@@ -20,21 +24,4 @@ function resetState() {
   state = { ...defaultState };
 }
 
-function updateOffenseStats(offenseKey: string, value: number) {
-  state.offenseStats = {
-    ...state.offenseStats,
-    [offenseKey]: value,
-  };
-}
-
-function resetOffenseStats() {
-  state.offenseStats = {};
-}
-
-export {
-  setState,
-  getState,
-  resetState,
-  updateOffenseStats,
-  resetOffenseStats,
-};
+export { setState, getState, resetState };
