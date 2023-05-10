@@ -14,9 +14,7 @@ To install Shield Prompt, simply visit the Chrome Web Store and search for Shiel
 
 ## Usage
 
-Once installed, Shield Prompt will automatically scan ChatGPT prompts for potentially confidential information. If any confidential information is found, it will be masked in the prompt with a red "X" to indicate that it has been blocked.
-
-If you need to unmask the information, simply click on the "X" to reveal the blocked content. 
+Once installed, run `yarn build` and the extension will be bundled into the dist folder with webpack. After bundling the project, follow this documentation[https://support.google.com/chrome/a/answer/2714278?hl=en#:~:text=Go%20to%20chrome%3A%2F%2Fextensions,the%20app%20or%20extension%20folder.] to add the extension to your Chrome browser.
 
 Shield Prompt will also display the estimated tokens and words in the prompt. This information can be useful for users who are working within strict word or token limits.
 
